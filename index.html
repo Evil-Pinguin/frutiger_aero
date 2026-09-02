@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FRUTIGER AERO — The future we were promised</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div id="cursor"></div>
+<div id="cursor-ripple"></div>
+
+<div id="loader">
+  <div class="loader-bubble"><div class="loader-fill" id="loader-fill"></div></div>
+  <div class="loader-text">Loading future...</div>
+  <div class="loader-percent" id="loader-percent">0%</div>
+</div>
+
+<nav id="top-nav">
+  <div class="logo">🌐 FRUTIGER AERO</div>
+  <div class="nav-links">
+    <a href="#about">About</a>
+    <a href="#timeline">Timeline</a>
+    <a href="#archive">Archive</a>
+    <a href="#desktop">Desktop</a>
+    <a href="#revival">Revival</a>
+    <a href="#bubbles-play">Play</a>
+  </div>
+  <div class="nav-right">
+    <div class="year-badge" id="year-badge">2007</div>
+    <div class="aero-toggle" id="aero-toggle"><div class="dot"></div> AERO: ON</div>
+    <div class="aero-toggle" id="sound-toggle">🔊 SOUND OFF</div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="bubbles-layer" id="hero-bubbles"></div>
+  <div class="grass-layer" id="grass-layer"></div>
+  <div class="hero-glass" id="hero-glass">
+    <h1>FRUTIGER<br>AERO</h1>
+    <div class="subtitle">2004 — 2013</div>
+    <div class="tagline">Nature. Technology. Optimism.</div>
+    <button class="aero-btn" id="enter-future">ENTER THE FUTURE <span class="arrow">→</span></button>
+    <div class="best-exp">best experienced at 1280×1024 • Windows Vista ready</div>
+  </div>
+</section>
+
+<!-- WELCOME MODAL -->
+<div class="modal-overlay" id="welcome-modal">
+  <div class="aero-modal">
+    <div class="aero-modal-header"><span>Welcome to 2007</span><span id="close-welcome" style="cursor:pointer">✕</span></div>
+    <div class="aero-modal-body">
+      <div class="status-line"><div class="status-dot"></div> Internet connected</div>
+      <div class="status-line"><div class="status-dot"></div> Weather: Sunny 23°C</div>
+      <div class="status-line"><div class="status-dot"></div> Future status: Optimistic</div>
+      <div class="status-line"><div class="status-dot"></div> Bubbles: 100%</div>
+      <button class="aero-btn" id="continue-btn" style="width:100%;justify-content:center;margin-top:16px">Continue →</button>
+    </div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="container">
+    <div class="section-label">02 • What is it?</div>
+    <h2 class="h2">Что вообще такое<br>Frutiger Aero?</h2>
+    <p class="p">Не энциклопедия, а чувство. Технологии, которые хотели быть частью природы, а не заменой ей. Стекло, вода, трава, блики, рыбы и бесконечный оптимизм.</p>
+  </div>
+  <div class="sphere-wrap" id="sphere-wrap">
+    <div class="glass-sphere"><img src="assets/glass-sphere.jpg" alt="glass sphere world"></div>
+    <!-- tags -->
+    <div class="tag" style="top:8%;left:18%">GLASS<div class="tag-popup"><b>GLASS</b><br>Полупрозрачные панели Aero Glass, blur, отражения. Интерфейс как будто сделан из стекла и света.</div></div>
+    <div class="tag" style="top:12%;right:16%">NATURE<div class="tag-popup"><b>NATURE</b><br>Трава, вода, листья, бабочки. Будущее представляли зеленым, а не серым.</div></div>
+    <div class="tag" style="top:45%;left:2%">SKEUOMORPHISM<div class="tag-popup"><b>SKEUOMORPHISM</b><br>Интерфейс старается выглядеть как настоящий физический объект. 📷 камера, 📅 календарь, 📝 блокнот — всё нажимаемое и реальное.</div></div>
+    <div class="tag" style="top:42%;right:0%">WEB 2.0<div class="tag-popup"><b>WEB 2.0</b><br>Глянцевые кнопки, градиенты, сильные блики, закругления. Интернет стал дружелюбным.</div></div>
+    <div class="tag" style="bottom:18%;left:12%">OPTIMISM<div class="tag-popup"><b>OPTIMISM</b><br>Технологии не угроза, а часть идеального мира. Солнечный свет, чистая вода, счастливый город.</div></div>
+    <div class="tag" style="bottom:8%;right:20%">GLOSS<div class="tag-popup"><b>GLOSS</b><br>Всё мокрое, блестящее, будто только что из воды. Aqua-эффект повсюду.</div></div>
+    <div class="tag" style="bottom:42%;left:42%">BLUE + GREEN<div class="tag-popup"><b>BLUE + GREEN</b><br>Два главных цвета эпохи: ярко-голубое небо #00AEEF и кислотная трава #9BF938.</div></div>
+  </div>
+</section>
+
+<!-- BUILDER -->
+<section id="builder">
+  <div class="container">
+    <div class="section-label">03 • Interactive</div>
+    <h2 class="h2">Собери Frutiger Aero</h2>
+    <div class="builder-grid">
+      <div class="builder-ui">
+        <h4 style="font-size:12px;letter-spacing:.15em;text-transform:uppercase;font-weight:900">Create your future</h4>
+        <div class="slider-row"><label><span>Sky</span><span id="v-sky">50%</span></label><input type="range" id="s-sky" min="0" max="100" value="30"></div>
+        <div class="slider-row"><label><span>Nature</span><span id="v-nature">50%</span></label><input type="range" id="s-nature" min="0" max="100" value="20"></div>
+        <div class="slider-row"><label><span>Gloss</span><span id="v-gloss">50%</span></label><input type="range" id="s-gloss" min="0" max="100" value="20"></div>
+        <div class="slider-row"><label><span>Bubbles</span><span id="v-bubbles">50%</span></label><input type="range" id="s-bubbles" min="0" max="100" value="10"></div>
+        <div class="slider-row"><label><span>Technology</span><span id="v-tech">50%</span></label><input type="range" id="s-tech" min="0" max="100" value="30"></div>
+        <div class="slider-row"><label><span>Optimism</span><span id="v-opt">50%</span></label><input type="range" id="s-opt" min="0" max="100" value="40"></div>
+        <p style="margin-top:16px;font-size:11px;opacity:.5">Grey ━━━━━● Bright blue / None ━●●● Maximum / Flat ━━━● Wet / 2026 ━━━● 2007</p>
+      </div>
+      <div class="builder-scene" id="builder-scene">
+        <div class="b-sky" id="b-sky"></div>
+        <div class="b-grass" id="b-grass"></div>
+        <div class="b-city" id="b-city">🏙️🌿</div>
+        <div class="b-rainbow" id="b-rainbow">🌈</div>
+        <div class="b-gloss" id="b-gloss"></div>
+        <div class="b-bubbles" id="b-bubbles"></div>
+        <div class="builder-achieved" id="builder-achieved">✨ FRUTIGER AERO ACHIEVED ✨</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TIMELINE -->
+<section id="timeline">
+  <div class="timeline-sticky" id="timeline-sticky">
+    <div class="tl-year" data-year="2001">2001</div>
+    <div class="tl-year" data-year="2004">2004</div>
+    <div class="tl-year active" data-year="2007">2007</div>
+    <div class="tl-year" data-year="2009">2009</div>
+    <div class="tl-year" data-year="2012">2012</div>
+    <div class="tl-year" data-year="2013">2013</div>
+    <div class="tl-year" data-year="2017">2017</div>
+    <div class="tl-year" data-year="2022">2022</div>
+    <div class="tl-year" data-year="2026">NOW</div>
+  </div>
+
+  <div class="tl-era" data-era="2001">
+    <div class="tl-content">
+      <div><h3>2001–2004<br>Seeds of Aero</h3><p class="p">Ещё Y2K: серебро, хром, темно-синий металл. Но в лабораториях Microsoft уже рисуют Longhorn — будущую Vista. Apple показывает Aqua. Постепенно появляется стекло, зеленый, небо. Мир устал от холодного металла. Истоки эстетики связывают с ранними Longhorn/Vista-разработками и одновременно с более «материальными» интерфейсами Mac OS X.</p></div>
+      <div><img src="assets/interface-vista.jpg" style="width:100%;border-radius:16px;border:3px solid white;box-shadow:var(--glass-shadow)"></div>
+    </div>
+  </div>
+  <div class="tl-era" data-era="2004">
+    <div class="tl-content">
+      <div><h3>2004<br>Glass emerges</h3><p class="p">Longhorn концепты показывают полупрозрачные окна, размытие, aurora. Появляются первые глянцевые Web 2.0 сайты. Природа начинает просачиваться в интерфейсы: листья, вода, трава.</p></div>
+      <div><div style="padding:24px;background:linear-gradient(180deg,#c0c0c0,#7a9cc6);border-radius:16px;border:2px solid white;color:white;font-weight:800">LONGHORN • AERO • AQUA<br><span style="font-weight:400;font-size:12px;opacity:.8">chrome → glass → nature</span></div></div>
+    </div>
+  </div>
+  <div class="tl-era" data-era="2007">
+    <div class="tl-content">
+      <div><h3>2007<br>THE FUTURE ARRIVES</h3><p class="p">Экран становится ярче. Всё происходит одновременно. Windows Vista закрепляет Aero Glass в массовой культуре, ранний iPhone использует богатый скевоморфный UI.</p><div class="tl-cards"><div class="tl-card" data-open="vista">Windows Vista — Aero Glass</div><div class="tl-card" data-open="wii">Nintendo Wii</div><div class="tl-card" data-open="ps3">PlayStation 3</div><div class="tl-card" data-open="iphone">iPhone</div><div class="tl-card" data-open="web2">Web 2.0</div></div></div>
+      <div style="font-size:80px;text-align:center">💧🌿💻🌈🐠</div>
+    </div>
+  </div>
+  <div class="tl-era" data-era="2009">
+    <div class="tl-content">
+      <div><h3>2009<br>Everywhere</h3><p class="p">Windows 7 — пик отполированности Aero. Samsung, Sony Ericsson, все телефоны — глянец. Реклама рисует стеклянные эко-города, покрытые травой. Упаковки, игрушки, сайты — везде пузыри.</p></div>
+      <div><img src="assets/tech-phones.jpg" style="width:100%;border-radius:16px;border:3px solid white"></div>
+    </div>
+  </div>
+  <div class="tl-era" data-era="2012">
+    <div class="tl-content">
+      <div><h3>2012<br>Peak optimism</h3><p class="p">Последний яркий год. Для многих — образ будущего по умолчанию: чистый, зеленый, дружелюбный. Технологии как часть идеального мира, а не угроза.</p></div>
+      <div style="font-size:64px">🌿🏙️💧✨<br><span style="font-size:14px;font-weight:800;letter-spacing:.1em">THE FUTURE WAS GREEN</span></div>
+    </div>
+  </div>
+  <div class="tl-era" data-era="2013">
+    <div class="tl-content">
+      <div><h3>2013<br>FLAT DESIGN</h3><p class="p">Depth was removed. Textures disappeared. Interfaces became simpler. Windows 8, iOS 7 и другие продукты начали закреплять совершенно другую эстетику. Примерно к 2011–2013 глянцевый язык стал уступать flat и минимализму.</p></div>
+      <div><div style="display:flex;gap:12px;flex-wrap:wrap"><div style="padding:20px;background:#f0f0f0;border:1px solid #ddd">▢ Download</div><div style="padding:20px;background:#111;color:white">— minimal —</div></div></div>
+    </div>
+  </div>
+  <div class="tl-era" data-era="2017">
+    <div class="tl-content">
+      <div><h3>2017<br>Name discovered</h3><p class="p">Сам термин Frutiger Aero появился уже постфактум — его ввели в 2017 году (Sofi Lee / CARI). Интернет внезапно понял, что у того чувства из детства было имя.</p></div>
+      <div><div style="padding:20px;background:var(--glass-bg);border:var(--glass-border);border-radius:14px;box-shadow:var(--glass-shadow)"><b>New aesthetic discovered:</b><br>FRUTIGER AERO<br><span style="font-size:11px;opacity:.6">Frutiger (шрифт) + Aero (Windows Aero)</span></div></div>
+    </div>
+  </div>
+  <div class="tl-era" data-era="2022">
+    <div class="tl-content">
+      <div><h3>2022<br>THE REVIVAL</h3><p class="p">BAM. Возвращается музыка, пузыри, небо, трава. TikTok, YouTube, Pinterest — по крайней мере к 2022–2023 эстетика переживает заметное интернет-возрождение и становится вирусной.</p></div>
+      <div><div style="display:flex;gap:8px;flex-wrap:wrap"><span style="padding:8px 12px;background:#000;color:white;border-radius:999px;font-size:11px;font-weight:800">TikTok</span><span style="padding:8px 12px;background:linear-gradient(180deg,#7ad8ff,#00AEEF);color:white;border-radius:999px;font-size:11px;font-weight:800">YouTube edits</span><span style="padding:8px 12px;background:#58C928;color:white;border-radius:999px;font-size:11px;font-weight:800">Wallpapers</span></div></div>
+    </div>
+  </div>
+  <div class="tl-era" data-era="2026">
+    <div class="tl-content">
+      <div><h3>NOW<br>Future nostalgia</h3><p class="p">Мы скучаем не по дизайну, а по тому, как ощущалось будущее. Оптимистичному, зеленому, стеклянному, с рыбками и пузырями.</p></div>
+      <div style="font-size:48px">2004 — 2013 — ∞</div>
+    </div>
+  </div>
+</section>
+
+<!-- WORLD -->
+<section id="world">
+  <div class="container">
+    <div class="section-label">05 • Where it was</div>
+    <h2 class="h2">Мир Frutiger Aero</h2>
+    <p class="p">Эстетика вышла далеко за пределы операционных систем — в рекламу, консоли, телефоны, упаковку, архитектуру.</p>
+    <div class="islands">
+      <div class="island"><div class="icon">💻</div><h4>COMPUTERS</h4><ul><li>Windows Vista / 7 Aero Glass</li><li>Transparency, Aurora</li><li>Старые программы с глянцем</li></ul></div>
+      <div class="island"><div class="icon">📱</div><h4>PHONES</h4><ul><li>Ранний iOS скевоморфизм</li><li>Samsung TouchWiz</li><li>Sony Ericsson</li></ul></div>
+      <div class="island"><div class="icon">🎮</div><h4>GAMES</h4><ul><li>Wii — белые глянцевые</li><li>PS3 XMB пузыри</li><li>Xbox 360 blades</li></ul></div>
+      <div class="island"><div class="icon">🌐</div><h4>INTERNET</h4><ul><li>Web 2.0 кнопки</li><li>Старые сайты</li><li>Глянец, градиенты</li></ul></div>
+      <div class="island"><div class="icon">📺</div><h4>ADVERTISING</h4><ul><li>Экологичные города</li><li>Вода, трава, листья</li><li>Стеклянные планеты</li></ul></div>
+      <div class="island"><div class="icon">🧴</div><h4>PRODUCT DESIGN</h4><ul><li>Упаковки, техника</li><li>Игрушки, бутылки</li><li>Корпоративные мечты</li></ul></div>
+    </div>
+  </div>
+</section>
+
+<!-- ARCHIVE -->
+<section id="archive">
+  <div class="archive-header"><h3 style="font-weight:900;letter-spacing:.1em">THE AERO ARCHIVE</h3><span style="font-size:11px;opacity:.6">Windows Photo Viewer • Double click to open</span></div>
+  <div class="archive-body">
+    <div class="archive-sidebar">
+      <div class="archive-folder active" data-folder="all">📁 All</div>
+      <div class="archive-folder" data-folder="wallpapers">📁 Wallpapers</div>
+      <div class="archive-folder" data-folder="interfaces">📁 Interfaces</div>
+      <div class="archive-folder" data-folder="advertising">📁 Advertising</div>
+      <div class="archive-folder" data-folder="nature">📁 Nature</div>
+      <div class="archive-folder" data-folder="technology">📁 Technology</div>
+      <div class="archive-folder" data-folder="corporate">📁 Corporate Dreams</div>
+    </div>
+    <div class="archive-grid" id="archive-grid"></div>
+  </div>
+</section>
+
+<!-- DESKTOP -->
+<section id="desktop">
+  <div class="desktop-icons">
+    <div class="d-icon" data-win="internet"><div class="d-img">🌍</div><span>Internet</span></div>
+    <div class="d-icon" data-win="aquarium"><div class="d-img">🐠</div><span>Aquarium</span></div>
+    <div class="d-icon" data-win="weather"><div class="d-img">☀️</div><span>Weather</span></div>
+    <div class="d-icon" data-win="media"><div class="d-img">🎵</div><span>Media Player</span></div>
+    <div class="d-icon" data-win="future"><div class="d-img">📁</div><span>My Future</span></div>
+    <div class="d-icon" data-win="bin"><div class="d-img">🗑️</div><span>Recycle Bin</span></div>
+  </div>
+
+  <div class="aero-window" id="win-weather" style="top:80px;left:160px">
+    <div class="win-titlebar"><span>☀️ Weather</span><div class="win-controls"><div class="win-btn min">—</div><div class="win-btn close" data-close>✕</div></div></div>
+    <div class="win-body"><h3 style="font-size:42px">Sunny</h3><p style="font-size:48px;font-weight:900">23°C</p><p style="margin-top:12px;opacity:.7">Tomorrow: also sunny. And the day after: still sunny. Future is bright.</p><div style="margin-top:16px;font-size:40px">🌤️🌈🌿</div></div>
+  </div>
+
+  <div class="aero-window" id="win-aquarium" style="top:120px;left:320px;width:460px">
+    <div class="win-titlebar"><span>🐠 Aquarium.scr</span><div class="win-controls"><div class="win-btn min">—</div><div class="win-btn close" data-close>✕</div></div></div>
+    <div class="win-body"><canvas id="aquarium-canvas" width="420" height="240"></canvas><p style="font-size:11px;margin-top:8px;opacity:.6">Click to feed • Fish follow cursor • Frutiger Aero pet</p><button class="aero-btn" id="feed-fish" style="margin-top:10px;padding:8px 14px;font-size:11px">FEED FISH 🍤</button></div>
+  </div>
+
+  <div class="aero-window" id="win-media" style="top:200px;left:200px">
+    <div class="win-titlebar"><span>🎵 Windows Media Player — Aero Mix</span><div class="win-controls"><div class="win-btn min">—</div><div class="win-btn close" data-close>✕</div></div></div>
+    <div class="win-body"><p style="font-weight:800;font-size:13px">Now playing: Frutiger Aero Ambient 2007</p><canvas id="visualizer" width="380" height="80"></canvas><div style="display:flex;gap:8px;margin-top:12px"><button class="aero-btn" id="play-audio" style="padding:8px 12px;font-size:11px">▶ PLAY</button><button class="aero-btn" id="pause-audio" style="padding:8px 12px;font-size:11px;background:linear-gradient(180deg,#ccc,#999)">⏸ PAUSE</button></div></div>
+  </div>
+
+  <div class="aero-window" id="win-internet" style="top:140px;left:500px">
+    <div class="win-titlebar"><span>🌍 Internet Explorer — World Wide Web</span><div class="win-controls"><div class="win-btn min">—</div><div class="win-btn close" data-close>✕</div></div></div>
+    <div class="win-body" style="background:white"><h4 style="color:#087ED1">Welcome to the World Wide Web!</h4><p style="font-size:12px;margin-top:8px;line-height:1.5">This is 2007. Internet is made of bubbles, gloss and optimism. Websites have real buttons you want to press.<br><br><span style="background:#9BF938;padding:2px 6px;border-radius:4px">Best viewed with Internet Explorer 7</span></p><div style="margin-top:12px;display:flex;gap:6px"><span style="padding:4px 8px;background:linear-gradient(180deg,#7ad8ff,#00AEEF);color:white;border-radius:999px;font-size:11px;font-weight:800">DOWNLOAD</span><span style="padding:4px 8px;background:#f0f0f0;border-radius:999px;font-size:11px">Share</span></div></div>
+  </div>
+
+  <div class="aero-window" id="win-future" style="top:300px;left:100px">
+    <div class="win-titlebar"><span>📁 My Future</span><div class="win-controls"><div class="win-btn min">—</div><div class="win-btn close" data-close>✕</div></div></div>
+    <div class="win-body"><p style="font-size:12px;line-height:1.6">future.txt<br><br>Technology doesn't have to be cold.<br>Computer can be soft, human, alive.<br><br>2004 — 2013 — ∞</p></div>
+  </div>
+
+  <div class="aero-window" id="win-bin" style="top:360px;left:400px">
+    <div class="win-titlebar"><span>🗑️ Recycle Bin</span><div class="win-controls"><div class="win-btn min">—</div><div class="win-btn close" data-close>✕</div></div></div>
+    <div class="win-body"><div style="padding:10px;background:#fff;border:1px dashed #ccc;border-radius:8px;display:flex;align-items:center;gap:10px;cursor:pointer" id="flat-exe"><span style="font-size:24px">📄</span><span style="font-size:12px;font-weight:700">flat_design.exe — 2013<br><span style="opacity:.5;font-weight:400">Click to restore?</span></span></div><p style="font-size:10px;margin-top:10px;opacity:.5">Warning: this file removes depth, gloss and happiness.</p></div>
+  </div>
+</section>
+
+<!-- PEAK -->
+<section id="peak">
+  <div class="container">
+    <div class="section-label">2007 — 2012 • Peak</div>
+    <h2 class="h2">For a few years,<br>this was what the future looked like.</h2>
+    <p class="big-quote">Идея была: технологии не обязаны быть холодными. Компьютер может выглядеть мягким, человеческим, живым, понятным. Будущее — это зелёные стеклянные города, а не киберпанк.</p>
+    <div style="margin-top:32px;font-size:56px">🌿🏙️💧✨🐠</div>
+  </div>
+</section>
+
+<!-- FALL -->
+<section id="fall">
+  <div class="container" style="text-align:center">
+    <div class="section-label">2013</div>
+    <h2 class="h2">FLAT DESIGN</h2>
+    <p class="p" style="margin:16px auto">Depth was removed.<br>Textures disappeared.<br>Interfaces became simpler.</p>
+    <button class="aero-btn" id="where-btn" style="margin-top:16px">Where did everything go? →</button>
+    <div class="comparison">
+      <div class="comp-card aero" id="comp-aero"><div style="font-size:12px;font-weight:800;letter-spacing:.1em">2007</div><div style="margin-top:12px"><button class="aero-btn">DOWNLOAD</button></div><div style="margin-top:12px;font-size:24px">🟢💿🌍📷</div></div>
+      <div class="comp-card flat" id="comp-flat"><div style="font-size:12px;font-weight:800;letter-spacing:.1em">2014</div><div style="margin-top:12px"><div style="padding:10px 20px;border:1px solid #ccc;display:inline-block;font-size:12px">Download</div></div><div style="margin-top:12px;font-size:24px">▢ ○ ● □</div></div>
+    </div>
+    <div class="slider-compare"><label style="font-size:11px;font-weight:800;letter-spacing:.15em">FRUTIGER AERO ↔ FLAT DESIGN</label><input type="range" id="flat-slider" min="0" max="100" value="0"></div>
+  </div>
+</section>
+
+<!-- WHY -->
+<section id="why">
+  <div class="container">
+    <h2 class="h2">WHY DID THE FUTURE CHANGE?</h2>
+    <div class="why-grid">
+      <div class="why-card"><h4>📱 MOBILE</h4><p style="font-size:13px;margin-top:8px;opacity:.7">Маленьким экранам требовались более простые интерфейсы. Gloss плохо масштабируется.</p></div>
+      <div class="why-card"><h4>⚡ SPEED</h4><p style="font-size:13px;margin-top:8px;opacity:.7">Меньше графики → быстрее загрузка, проще разработка, лучше производительность.</p></div>
+      <div class="why-card"><h4>◻️ MINIMALISM</h4><p style="font-size:13px;margin-top:8px;opacity:.7">Дизайн ушёл в сторону содержания. Content is king, chrome is dead.</p></div>
+      <div class="why-card"><h4>🏢 CORPORATE</h4><p style="font-size:13px;margin-top:8px;opacity:.7">Появился новый визуальный язык: Google Material, Apple flat, Microsoft Modern.</p></div>
+      <div class="why-card"><h4>🪟 FLAT DESIGN</h4><p style="font-size:13px;margin-top:8px;opacity:.7">Windows 8, iOS 7 закрепили плоскую эстетику как стандарт индустрии 2013.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- SILENCE -->
+<section id="silence">
+  <div class="silence-spacer">2014</div>
+  <div class="silence-spacer">2015</div>
+  <div class="silence-spacer">2016 — almost no animations</div>
+  <div style="padding:60px 24px">
+    <div class="popup-2017">
+      <div style="font-size:11px;letter-spacing:.3em;opacity:.5;font-weight:800">2017 • New aesthetic discovered</div>
+      <h3 style="margin-top:10px;font-size:28px;font-weight:900">FRUTIGER AERO</h3>
+      <p style="font-size:12px;margin-top:8px;opacity:.7">Название появилось уже после эпохи — его связывают с Sofi Lee / Consumer Aesthetics Research Institute в 2017 году.</p>
+    </div>
+  </div>
+</section>
+
+<!-- REVIVAL -->
+<section id="revival">
+  <div class="bubbles-layer" id="revival-bubbles"></div>
+  <div class="container" style="position:relative;z-index:2">
+    <div class="section-label" style="color:white;opacity:.7">2022 — NOW</div>
+    <h2>THE INTERNET<br>REMEMBERS.</h2>
+    <p class="p" style="color:white;margin:20px auto;opacity:.9">TikTok, YouTube, Pinterest, Reddit. Эдиты, ностальгические видео, wallpapers, музыка. К 2022–2023 эстетика стала вирусной.</p>
+    <div class="platforms"><div class="platform">TikTok • 2.1B views</div><div class="platform">YouTube • Aero edits</div><div class="platform">Pinterest • Wallpapers</div><div class="platform">Reddit • r/FrutigerAero</div></div>
+    <div style="margin-top:32px;font-size:48px">💿🌊✨</div>
+  </div>
+</section>
+
+<!-- WHY MISS -->
+<section id="why-miss">
+  <div class="container" style="position:relative;z-index:2;text-align:center">
+    <h2 class="h2" style="color:white">WHY DO WE MISS A FUTURE THAT NEVER EXISTED?</h2>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;margin-top:40px;text-align:left">
+      <div class="why-card" style="background:rgba(255,255,255,0.08);color:white;border-color:rgba(255,255,255,0.15)"><h4>NOSTALGIA</h4><p style="font-size:13px;margin-top:8px;opacity:.8">детство, старый компьютер, родительский ноутбук, Windows 7, школьные компьютеры, игры.</p></div>
+      <div class="why-card" style="background:rgba(255,255,255,0.08);color:white;border-color:rgba(255,255,255,0.15)"><h4>OPTIMISM</h4><p style="font-size:13px;margin-top:8px;opacity:.8">Frutiger Aero изображал технологии не как угрозу, а как часть идеального мира. Будущее было солнечным.</p></div>
+      <div class="why-card" style="background:rgba(255,255,255,0.08);color:white;border-color:rgba(255,255,255,0.15)"><h4>NATURE + TECH</h4><p style="font-size:13px;margin-top:8px;opacity:.8">Не 🌆 киберпанк, а 🌿🌎💻 — технологии, которые растут вместе с природой.</p></div>
+      <div class="why-card" style="background:rgba(255,255,255,0.08);color:white;border-color:rgba(255,255,255,0.15)"><h4>TACTILITY</h4><p style="font-size:13px;margin-top:8px;opacity:.8">Кнопки выглядели нажимаемыми. Иконки — физическими. Интерфейсы ощущались как предметы.</p></div>
+    </div>
+  </div>
+  <div class="floating-thought" style="top:20%;left:10%">Windows 7 wallpaper</div>
+  <div class="floating-thought" style="top:35%;right:12%;animation-delay:1s">Wii menu music</div>
+  <div class="floating-thought" style="bottom:30%;left:18%;animation-delay:2s">aquarium screensaver</div>
+  <div class="floating-thought" style="bottom:20%;right:15%;animation-delay:1.5s">bubbly and glossy</div>
+</section>
+
+<!-- QUIZ -->
+<section id="quiz">
+  <div class="container">
+    <div class="section-label">Interactive • Test</div>
+    <h2 class="h2">Насколько ты Frutiger Aero?</h2>
+    <div class="quiz-card" id="quiz-card">
+      <div class="quiz-q"><h4>1. Выбери небо</h4><div class="quiz-options" data-q="sky"><div class="q-opt" data-v="cloudy">☁️ cloudy</div><div class="q-opt" data-v="sunny">🌤 sunny</div><div class="q-opt" data-v="rainbow">🌈 rainbow</div></div></div>
+      <div class="quiz-q"><h4>2. Выбери кнопку</h4><div class="quiz-options" data-q="btn"><div class="q-opt" data-v="flat">flat</div><div class="q-opt" data-v="neumorph">neumorphism</div><div class="q-opt" data-v="glass">glass</div><div class="q-opt" data-v="glossy">GLOSSY WEB 2.0</div></div></div>
+      <div class="quiz-q"><h4>3. Выбери домашнее животное</h4><div class="quiz-options" data-q="pet"><div class="q-opt" data-v="cat">🐈 cat</div><div class="q-opt" data-v="dog">🐕 dog</div><div class="q-opt" data-v="fish">🐠 BLUE TROPICAL FISH</div></div></div>
+      <button class="aero-btn" id="quiz-result-btn" style="width:100%;justify-content:center;margin-top:10px">УЗНАТЬ РЕЗУЛЬТАТ →</button>
+      <div id="quiz-result" style="margin-top:20px;display:none;text-align:center"><div style="font-size:48px;font-weight:900" id="quiz-score">96% FRUTIGER AERO</div><p id="quiz-text" style="margin-top:8px">You believe technology should have bubbles.</p><button class="aero-btn" id="share-quiz" style="margin-top:12px;padding:8px 16px;font-size:11px">SHARE → TikTok ready</button></div>
+    </div>
+  </div>
+</section>
+
+<!-- BUBBLE PLAYGROUND -->
+<section id="bubbles-play">
+  <div class="container">
+    <div class="section-label">Playground</div>
+    <h2 class="h2">POP THE BUBBLES</h2>
+    <p class="p" style="margin:12px auto">По экрану летает 30 пузырей. Лопай мышкой. Каждый — pop и частицы воды.</p>
+    <div style="display:flex;gap:12px;justify-content:center;margin-top:12px"><span id="bubble-count" style="font-weight:800">0 / 20 popped</span><span id="bubble-ach" style="display:none;background:#58C928;color:white;padding:4px 10px;border-radius:999px;font-size:11px;font-weight:800">🏆 Achievement unlocked: Touch Grass</span></div>
+    <div id="bubble-field"></div>
+  </div>
+</section>
+
+<!-- GROW -->
+<section id="grow">
+  <div class="container">
+    <div class="section-label">Grow your Aero world</div>
+    <h2 class="h2">Your future is ready.</h2>
+    <p class="p" style="margin:12px auto">Кликай по поляне: сначала трава, потом цветы, деревья, стеклянный город, радуга.</p>
+    <div id="grow-field"><div style="position:absolute;bottom:10px;left:50%;transform:translateX(-50%);font-size:11px;opacity:.6;font-weight:700;letter-spacing:.1em">CLICK TO GROW 🌱</div></div>
+    <div id="grow-status" style="margin-top:12px;font-weight:800;letter-spacing:.1em"></div>
+  </div>
+</section>
+
+<!-- FINALE -->
+<section id="finale">
+  <div class="content">
+    <h2>Maybe we don't miss the design.</h2>
+    <p style="margin-top:16px;font-size:18px;opacity:.7">Maybe we miss how the future felt.</p>
+    <div class="infinity">2004 — 2013 — ∞</div>
+    <button class="aero-btn" id="return-2007" style="margin-top:24px">RETURN TO 2007 ↑</button>
+    <div style="margin-top:20px;font-size:10px;opacity:.4;letter-spacing:.2em">FRUTIGER AERO • The future we were promised • Built as time capsule</div>
+  </div>
+</section>
+
+<!-- PHOTO VIEWER -->
+<div id="photo-viewer">
+  <div class="viewer-window">
+    <div class="viewer-titlebar"><span>Windows Photo Viewer — aero_wallpaper.jpg</span><span id="close-viewer" style="cursor:pointer">✕</span></div>
+    <div class="viewer-body"><img id="viewer-img" src=""></div>
+  </div>
+</div>
+
+<!-- VISTA MODAL -->
+<div class="modal-overlay" id="vista-modal">
+  <div class="aero-modal" style="width:min(520px,90vw)">
+    <div class="aero-modal-header"><span id="vista-title">Windows Vista</span><span class="close-modal" data-close-vista style="cursor:pointer">✕</span></div>
+    <div class="aero-modal-body" id="vista-body"></div>
+  </div>
+</div>
+
+<script src="js/main.js"></script>
+</body>
+</html>
