@@ -110,12 +110,21 @@ body.flat .aero-toggle .dot{background:#999;box-shadow:none}
   content:'';position:absolute;inset:0;
   background: radial-gradient(ellipse at center, rgba(255,255,255,0.15) 0%, transparent 70%);
 }
+/* FLUFFY CLOUDS - no more white ovals */
 .cloud{
-  position:absolute;background:white;border-radius:50%;opacity:.85;
-  filter:blur(1px);box-shadow: 0 2px 20px rgba(255,255,255,0.6);
+  position:absolute;opacity:.92;pointer-events:none;
+  filter: drop-shadow(0 6px 20px rgba(255,255,255,0.7)) drop-shadow(0 2px 8px rgba(0,120,200,0.15));
   animation: drift linear infinite;
+  display:flex;align-items:flex-end;gap:0;
 }
-@keyframes drift{from{transform:translateX(-200px)}to{transform:translateX(calc(100vw + 200px))}}
+.cloud .puff{
+  background: radial-gradient(circle at 35% 35%, #ffffff 0%, #f7fdff 40%, #e6f7ff 100%);
+  border-radius:50%;
+  box-shadow: inset 0 2px 6px rgba(255,255,255,0.9), inset 0 -4px 10px rgba(180,220,255,0.25);
+}
+@keyframes drift{from{transform:translateX(-300px)}to{transform:translateX(calc(100vw + 300px))}}
+/* hide grass in hero as requested */
+.grass-layer, .grass-blade{display:none !important}
 .bubbles-layer{position:absolute;inset:0;pointer-events:none;overflow:hidden}
 .bubble{
   position:absolute;border-radius:50%;
@@ -214,26 +223,32 @@ section{position:relative;padding:100px 24px}
 
 /* ABOUT - GLASS SPHERE */
 #about{background: linear-gradient(180deg, #b9f4ff 0%, #e6fbff 40%, #ffffff 100%);overflow:hidden}
-.sphere-wrap{position:relative;width:min(700px,90vw);height:min(700px,90vw);margin:40px auto;display:flex;align-items:center;justify-content:center}
+.sphere-wrap{position:relative;width:min(860px,94vw);height:min(860px,94vw);margin:20px auto;display:flex;align-items:center;justify-content:center}
 .glass-sphere{
-  width:58%;aspect-ratio:1;border-radius:50%;position:relative;z-index:2;
-  background: radial-gradient(circle at 30% 25%, rgba(255,255,255,0.9), rgba(185,244,255,0.5) 30%, rgba(0,174,239,0.25) 60%, rgba(8,126,209,0.2) 100%);
-  border:2px solid rgba(255,255,255,0.9);
-  box-shadow: inset 0 10px 30px white, inset 0 -20px 40px rgba(0,174,239,0.2), 0 30px 60px rgba(0,120,200,0.25);
-  backdrop-filter: blur(8px);
+  width:74%;aspect-ratio:1;border-radius:50%;position:relative;z-index:2;
+  background: radial-gradient(circle at 30% 25%, rgba(255,255,255,0.95), rgba(185,244,255,0.6) 30%, rgba(0,174,239,0.28) 60%, rgba(8,126,209,0.22) 100%);
+  border:2px solid rgba(255,255,255,0.95);
+  box-shadow: inset 0 12px 36px white, inset 0 -24px 48px rgba(0,174,239,0.22), 0 36px 72px rgba(0,120,200,0.28);
+  backdrop-filter: blur(10px);
   overflow:hidden;display:flex;align-items:center;justify-content:center;
+  transition: transform .6s ease;
 }
+.sphere-wrap:hover .glass-sphere{transform:scale(1.02)}
 .glass-sphere img{width:100%;height:100%;object-fit:cover;opacity:.9;border-radius:50%}
 .sphere-world{
   position:absolute;inset:12%;border-radius:50%;overflow:hidden;
   background: linear-gradient(180deg, #87d9ff, #58C928);
 }
 .tag{
-  position:absolute;padding:8px 14px;border-radius:999px;
+  position:absolute;padding:12px 20px;border-radius:999px;
   background: var(--glass-bg);border:var(--glass-border);box-shadow:var(--glass-shadow);
-  backdrop-filter:blur(12px);font-size:11px;font-weight:800;letter-spacing:.08em;
-  cursor:pointer;transition:.3s;z-index:3;
+  backdrop-filter:blur(14px);font-size:13px;font-weight:900;letter-spacing:.08em;
+  cursor:pointer;transition:.35s;z-index:3;
 }
+.aero-icon{width:52px;height:52px;object-fit:contain;border-radius:14px;background:var(--glass-bg);border:1px solid rgba(255,255,255,0.9);box-shadow:var(--glass-shadow), inset 0 1px 0 white;padding:6px;backdrop-filter:blur(8px)}
+.island .aero-icon{width:64px;height:64px;margin-bottom:12px}
+.d-icon .aero-icon{width:48px;height:48px;padding:4px;border-radius:12px}
+.tl-card .aero-icon{width:28px;height:28px;vertical-align:middle;margin-right:6px;padding:2px}
 .tag:hover{transform:scale(1.1);z-index:5}
 .tag .tag-popup{
   position:absolute;left:50%;bottom:calc(100% + 12px);transform:translateX(-50%) scale(.9);
@@ -274,8 +289,32 @@ section{position:relative;padding:100px 24px}
 }
 .builder-achieved.show{opacity:1;visibility:visible;transform:translate(-50%,-50%) scale(1)}
 
-/* TIMELINE */
-#timeline{background: linear-gradient(180deg, #fff 0%, #e6fbff 100%);padding:0}
+/* YEAR TRANSITION OVERLAY */
+#year-transition{
+  position:fixed;inset:0;z-index:8500;pointer-events:none;display:flex;align-items:center;justify-content:center;
+  opacity:0;visibility:hidden;transition: opacity .4s ease, visibility .4s;
+  background: radial-gradient(ellipse at center, rgba(255,255,255,0.85) 0%, rgba(185,244,255,0.4) 60%, transparent 80%);
+  backdrop-filter: blur(0px);
+}
+#year-transition.show{opacity:1;visibility:visible;backdrop-filter: blur(12px);}
+#year-transition .yt-year{
+  font-size: clamp(80px,18vw,220px);font-weight:900;letter-spacing:-.04em;line-height:.8;
+  background: linear-gradient(180deg, #0a2a44 0%, #00AEEF 50%, #58C928 100%);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  filter: drop-shadow(0 8px 0 white) drop-shadow(0 20px 40px rgba(0,0,0,0.15));
+  transform: scale(.8) translateY(30px);transition: transform .6s cubic-bezier(.16,1,.3,1);
+}
+#year-transition.show .yt-year{transform: scale(1) translateY(0);}
+
+/* TIMELINE ENHANCED */
+#timeline{background: linear-gradient(180deg, #fff 0%, #e6fbff 100%);padding:0;--era-bg: #ffffff}
+.tl-era{transition: background 1s ease, filter .8s ease}
+.tl-era.active-era{background: linear-gradient(180deg, rgba(185,244,255,0.25), rgba(255,255,255,0.6)) !important;filter: saturate(1.2)}
+.tl-era::before{
+  content:'';position:absolute;inset:0;pointer-events:none;opacity:0;transition: opacity 1s;
+  background: radial-gradient(ellipse at 20% 30%, rgba(0,174,239,0.08), transparent 60%), radial-gradient(ellipse at 80% 70%, rgba(88,201,40,0.08), transparent 60%);
+}
+.tl-era.active-era::before{opacity:1}
 .timeline-sticky{
   position:sticky;top:68px;z-index:800;background:rgba(255,255,255,0.75);backdrop-filter:blur(16px);
   border-bottom:1px solid rgba(0,0,0,0.06);padding:14px 24px;display:flex;gap:12px;overflow-x:auto;

@@ -20,15 +20,6 @@ const cursor=$('#cursor'), ripple=$('#cursor-ripple');
 let mouseX=0,mouseY=0,cx=0,cy=0;
 document.addEventListener('mousemove',e=>{
   mouseX=e.clientX;mouseY=e.clientY;
-  // grass interaction
-  document.querySelectorAll('.grass-blade').forEach(b=>{
-    const r=b.getBoundingClientRect();
-    const dx=mouseX - (r.left+r.width/2);
-    const dy=mouseY - r.top;
-    const dist=Math.sqrt(dx*dx+dy*dy);
-    if(dist<120){b.style.transform=`rotate(${dx*0.08}deg)`}
-    else b.style.transform='rotate(0deg)';
-  });
 });
 (function loop(){
   cx+=(mouseX-cx)*0.18; cy+=(mouseY-cy)*0.18;
@@ -51,7 +42,6 @@ $$('button, .tag, .tl-card, .archive-folder, .d-icon, .q-opt, .aero-toggle, .thu
 
 function initAll(){
   initHeroBubbles();
-  initGrass();
   initBuilder();
   initTimeline();
   initArchive();
@@ -67,41 +57,39 @@ function initAll(){
   initYearObserver();
 }
 
-// HERO BUBBLES
+// HERO BUBBLES + FLUFFY CLOUDS (no white ovals)
 function initHeroBubbles(){
   const cont=$('#hero-bubbles');
   if(!cont)return;
-  for(let i=0;i<18;i++){
+  for(let i=0;i<22;i++){
     const b=document.createElement('div');b.className='bubble';
-    const size=20+Math.random()*60;
+    const size=18+Math.random()*56;
     b.style.width=size+'px';b.style.height=size+'px';
     b.style.left=Math.random()*100+'%';
-    b.style.animationDuration=(12+Math.random()*18)+'s';
-    b.style.animationDelay=(Math.random()*10)+'s';
+    b.style.animationDuration=(14+Math.random()*20)+'s';
+    b.style.animationDelay=(Math.random()*12)+'s';
     cont.appendChild(b);
   }
-  // clouds
+  // fluffy clouds - composed of 3-5 puffs
   const hero=$('#hero');
-  for(let i=0;i<6;i++){
+  for(let i=0;i<5;i++){
     const c=document.createElement('div');c.className='cloud';
-    const w=80+Math.random()*180;const h=w*0.6;
-    c.style.width=w+'px';c.style.height=h+'px';
-    c.style.top=(5+Math.random()*40)+'%';
-    c.style.left='-200px';
-    c.style.animationDuration=(30+Math.random()*40)+'s';
-    c.style.animationDelay=(Math.random()*20)+'s';
+    c.style.top=(4+Math.random()*38)+'%';
+    c.style.left='-320px';
+    c.style.animationDuration=(45+Math.random()*50)+'s';
+    c.style.animationDelay=(Math.random()*30)+'s';
+    const puffCount=3+Math.floor(Math.random()*3);
+    const baseW=70+Math.random()*60;
+    for(let j=0;j<puffCount;j++){
+      const puff=document.createElement('div');puff.className='puff';
+      const w=baseW*(0.7+Math.random()*0.6);
+      const h=w*(0.65+Math.random()*0.25);
+      puff.style.width=w+'px';puff.style.height=h+'px';
+      puff.style.marginLeft=j===0?'0':(-w*0.35)+'px';
+      puff.style.transform=`translateY(${ (Math.random()-0.5)*12}px)`;
+      c.appendChild(puff);
+    }
     hero.appendChild(c);
-  }
-}
-function initGrass(){
-  const layer=$('#grass-layer');
-  if(!layer)return;
-  for(let i=0;i<80;i++){
-    const blade=document.createElement('div');blade.className='grass-blade';
-    blade.style.left=(i/80*100+Math.random()*1.5)+'%';
-    blade.style.height=(30+Math.random()*80)+'px';
-    blade.style.opacity=0.6+Math.random()*0.4;
-    layer.appendChild(blade);
   }
 }
 function initParallax(){
@@ -195,7 +183,27 @@ function initBuilder(){
   update();
 }
 
-// TIMELINE
+// TIMELINE WITH EXPLICIT YEAR TRANSITIONS
+let lastEra=null;
+function triggerYearTransition(year){
+  const overlay=$('#year-transition');
+  const yt=$('#yt-year');
+  if(!overlay||!yt)return;
+  yt.textContent=year;
+  overlay.classList.add('show');
+  // play chime
+  if(audioCtx){
+    try{
+      const o=audioCtx.createOscillator(), g=audioCtx.createGain();
+      o.frequency.setValueAtTime(600,audioCtx.currentTime);
+      o.frequency.exponentialRampToValueAtTime(1200,audioCtx.currentTime+0.4);
+      g.gain.setValueAtTime(0.12,audioCtx.currentTime);
+      g.gain.exponentialRampToValueAtTime(0.001,audioCtx.currentTime+0.6);
+      o.connect(g);g.connect(audioCtx.destination);o.start();o.stop(audioCtx.currentTime+0.6);
+    }catch{}
+  }
+  setTimeout(()=>overlay.classList.remove('show'),1100);
+}
 function initTimeline(){
   const years=$$('.tl-year');
   const eras=$$('.tl-era');
@@ -205,9 +213,32 @@ function initTimeline(){
         const era=e.target.dataset.era;
         years.forEach(y=>y.classList.toggle('active', y.dataset.year===era));
         $('#year-badge').textContent=era;
+        // explicit transition effect
+        eras.forEach(er=>er.classList.remove('active-era'));
+        e.target.classList.add('active-era');
+        if(lastEra!==era){
+          triggerYearTransition(era);
+          // background shift per era
+          const bgMap={
+            '2001':'linear-gradient(180deg,#c0c8d0,#7a8fa6)',
+            '2004':'linear-gradient(180deg,#d0e8ff,#a0c4e8)',
+            '2007':'linear-gradient(180deg,#e6fbff,#87d9ff)',
+            '2009':'linear-gradient(180deg,#b9f4ff,#58C928)',
+            '2012':'linear-gradient(180deg,#87d9ff,#9BF938)',
+            '2013':'linear-gradient(180deg,#f5f5f5,#e0e0e0)',
+            '2017':'linear-gradient(180deg,#fff,#b9f4ff)',
+            '2022':'linear-gradient(180deg,#b9f4ff,#00AEEF)',
+            '2026':'linear-gradient(180deg,#00AEEF,#087ED1)'
+          };
+          if(bgMap[era]){
+            $('#timeline').style.background=bgMap[era];
+            $('#timeline').style.transition='background 1.2s ease';
+          }
+          lastEra=era;
+        }
       }
     });
-  },{threshold:0.5});
+  },{threshold:0.55});
   eras.forEach(er=>observer.observe(er));
   years.forEach(y=>y.addEventListener('click',()=>{
     const target=document.querySelector(`.tl-era[data-era="${y.dataset.year}"]`);
@@ -459,25 +490,26 @@ function initBubblePlay(){
   field.addEventListener('dblclick',spawn);
 }
 
-// GROW WORLD
+// GROW WORLD - with generated glossy icons instead of emoji
 function initGrow(){
   const field=$('#grow-field'), status=$('#grow-status');
   if(!field)return;
   let stage=0;const items=[];
   const stages=[
-    {icon:'🌱',count:8,text:'Grass is growing...'},
-    {icon:'🌼',count:5,text:'Flowers blooming'},
-    {icon:'🌳',count:3,text:'Trees rising'},
-    {icon:'🏙️',count:1,text:'Glass city emerging'},
-    {icon:'🌈',count:1,text:'Rainbow appears — Your future is ready.'}
+    {icon:'<img src="assets/icon-product.png" style="width:36px;height:36px;border-radius:8px">',count:8,text:'Grass is growing...',isImg:true},
+    {icon:'<img src="assets/nature-grass.jpg" style="width:36px;height:36px;border-radius:50%;object-fit:cover">',count:5,text:'Flowers blooming',isImg:true},
+    {icon:'<img src="assets/icon-ad.png" style="width:42px;height:42px;border-radius:10px">',count:3,text:'Trees rising',isImg:true},
+    {icon:'<img src="assets/icon-computer.png" style="width:48px;height:48px;border-radius:10px">',count:1,text:'Glass city emerging',isImg:true},
+    {icon:'<div style="width:64px;height:20px;background:linear-gradient(90deg,red,orange,yellow,green,cyan,blue,violet);border-radius:999px;box-shadow:0 2px 12px rgba(0,0,0,0.15)"></div>',count:1,text:'Rainbow appears — Your future is ready.',isImg:true}
   ];
   field.addEventListener('click',e=>{
     if(stage>=stages.length)return;
     const rect=field.getBoundingClientRect();
     const x=e.clientX-rect.left, y=e.clientY-rect.top;
-    if(y<rect.height*0.4 && stage<3)return; // only grow grass at bottom initially
+    if(y<rect.height*0.4 && stage<3)return;
     const cur=stages[stage];
-    const el=document.createElement('div');el.className='grow-item';el.textContent=cur.icon;
+    const el=document.createElement('div');el.className='grow-item';
+    if(cur.isImg)el.innerHTML=cur.icon; else el.textContent=cur.icon;
     el.style.left=(x+ (Math.random()-0.5)*60)+'px';el.style.top=(y+ (Math.random()-0.5)*30)+'px';
     field.appendChild(el);items.push(el);
     cur.count--;
